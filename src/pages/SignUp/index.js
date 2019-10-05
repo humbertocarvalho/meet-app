@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
+import logo from '~/assets/logo.svg';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
@@ -16,7 +17,7 @@ const schema = Yup.object().shape({
 export default function SignUp() {
   return (
     <>
-      {/* <img src={logo} alt="Meetapp" /> */}
+      <img src={logo} alt="Meetapp" />
       <Form schema={schema}>
         <Input name="name" type="text" placeholder="Nome completo" />
         <Input name="email" type="email" placeholder="Seu e-mail." />
