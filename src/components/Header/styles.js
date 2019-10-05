@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 92px;
+  height: 60px;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
@@ -18,6 +18,8 @@ export const Content = styled.div`
     align-items: center;
 
     img {
+      width: 64px;
+      height: 64px;
       margin-right: 20px;
       padding-right: 20px;
     }
@@ -55,15 +57,12 @@ export const Profile = styled.div`
       color: #999;
     }
   }
-  img {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-  }
 `;
 
 export const Logout = styled.button`
   background: #f94d6a;
   width: 71px;
   height: 42px;
+  border-radius: 4px;
+  border: none;
 `;
