@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: #fff;
+  background: #000000;
   padding: 0 30px;
 `;
 
 export const Content = styled.div`
-  height: 64px;
+  height: 92px;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
@@ -20,7 +20,6 @@ export const Content = styled.div`
     img {
       margin-right: 20px;
       padding-right: 20px;
-      border-right: 1px solid #eee;
     }
 
     a {
@@ -39,7 +38,6 @@ export const Profile = styled.div`
   display: flex;
   margin-left: 20px;
   padding-left: 20px;
-  border-left: 1px solid #eee;
 
   div {
     text-align: right;
@@ -47,7 +45,7 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: #333;
+      color: #ffffff;
     }
 
     a {
@@ -58,8 +56,14 @@ export const Profile = styled.div`
     }
   }
   img {
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
   }
+`;
+
+export const Logout = styled.button`
+  background: #f94d6a;
+  width: 71px;
+  height: 42px;
 `;

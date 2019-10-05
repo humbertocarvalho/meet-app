@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '~/assets/logo.svg';
 
-import { Container, Content, Profile } from './styles';
+import { Container, Content, Profile, Logout } from './styles';
 
 export default function Header() {
   return (
@@ -11,7 +11,6 @@ export default function Header() {
       <Content>
         <nav>
           <img src={logo} alt="GoBarber" />
-          <Link to="/dashboard">DASHBOARD</Link>
         </nav>
 
         <aside>
@@ -21,11 +20,8 @@ export default function Header() {
               <strong>Humberto de Carvalho</strong>
               <Link to="/profile">Meu perfil</Link>
             </div>
-            <img
-              src="https://api.adorable.io/avatars/50/abott@adorable.png"
-              alt="Humberto"
-            />
           </Profile>
+          <Logout>Sair</Logout>
         </aside>
       </Content>
     </Container>
