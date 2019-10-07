@@ -16,18 +16,6 @@ export const Content = styled.div`
   nav {
     display: flex;
     align-items: center;
-
-    img {
-      width: 64px;
-      height: 64px;
-      margin-right: 20px;
-      padding-right: 20px;
-    }
-
-    a {
-      font-weight: bold;
-      color: #7159c1;
-    }
   }
 
   aside {
@@ -65,4 +53,6 @@ export const Logout = styled.button`
   height: 42px;
   border-radius: 4px;
   border: none;
+  color: #fff;
+  font-weight: bold;
 `;
