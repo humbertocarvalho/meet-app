@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
   max-width: 900px;
   margin: 50px auto;
+
   header {
     display: flex;
     justify-content: space-between;
@@ -13,6 +14,7 @@ export const Container = styled.div`
       color: #fff;
     }
 
+    /* This is the Link tag */
     a {
       background: #f94d6a;
       border-radius: 4px;
