@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MdAddCircleOutline } from 'react-icons/md';
+import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
 
-import { Container, Meetups, Meetup } from './styles';
+import { Container, Meetups, Meetup, Detalhar } from './styles';
 
 export default function Dashboard() {
   return (
@@ -16,29 +16,47 @@ export default function Dashboard() {
       </header>
 
       <Meetups>
-        <Meetup>
+        <Meetup to={`/meetups/${'1'}`}>
           <span>Meetup de React Native</span>
-          <Link to="meetups/create">
-            <MdAddCircleOutline color="#fff" size={22} />
-          </Link>
+          <Detalhar>
+            <p>24 de Junho, às 20h</p>
+            <MdChevronRight color="#fff" size={22} />
+          </Detalhar>
         </Meetup>
-        <Meetup>
+        <Meetup to={`/meetups/${'1'}`}>
           <span>Meetup de React Native</span>
-          <Link to="meetups/create">
-            <MdAddCircleOutline color="#fff" size={22} />
-          </Link>
+          <Detalhar>
+            <p>24 de Junho, às 20h</p>
+            <MdChevronRight color="#fff" size={22} />
+          </Detalhar>
         </Meetup>
-        <Meetup>
+        <Meetup to={`/meetups/${'1'}`}>
           <span>Meetup de React Native</span>
-          <Link to="meetups/create">
-            <MdAddCircleOutline color="#fff" size={22} />
-          </Link>
+          <Detalhar>
+            <p>24 de Junho, às 20h</p>
+            <MdChevronRight color="#fff" size={22} />
+          </Detalhar>
         </Meetup>
-        <Meetup>
+        <Meetup to={`/meetups/${'1'}`}>
           <span>Meetup de React Native</span>
-          <Link to="meetups/create">
-            <MdAddCircleOutline color="#fff" size={22} />
-          </Link>
+          <Detalhar>
+            <p>24 de Junho, às 20h</p>
+            <MdChevronRight color="#fff" size={22} />
+          </Detalhar>
+        </Meetup>
+        <Meetup to={`/meetups/${'1'}`}>
+          <span>Meetup de React Native</span>
+          <Detalhar>
+            <p>24 de Junho, às 20h</p>
+            <MdChevronRight color="#fff" size={22} />
+          </Detalhar>
+        </Meetup>
+        <Meetup to={`/meetups/${'1'}`}>
+          <span>Meetup de React Native</span>
+          <Detalhar>
+            <p>24 de Junho, às 20h</p>
+            <MdChevronRight color="#fff" size={22} />
+          </Detalhar>
         </Meetup>
       </Meetups>
     </Container>
