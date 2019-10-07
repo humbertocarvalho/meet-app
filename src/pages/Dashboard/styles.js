@@ -54,10 +54,11 @@ export const Meetup = styled(Link)`
     font-weight: bold;
   }
 
-  transition: opacity 0.2s;
+  transition: transform 0.2s opacity 0.2s;
 
   &:hover {
-    opacity: 0.5;
+    opacity: 0.8;
+    transform: translateY(-2px);
   }
 `;
 
