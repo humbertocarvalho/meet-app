@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // import { updateProfileRequest } from '~/store/modules/user/actions';
 // import { signOut } from '~/store/modules/auth/actions';
-import { Container } from './styles';
+import { Container, Botao } from './styles';
 
 export default function Profile() {
   const dispatchEvent = useDispatch();
@@ -39,10 +39,12 @@ export default function Profile() {
           placeholder="Confirmação de senha"
         />
 
-        <button type="submit">
-          <MdAddCircleOutline color="#fff" size={22} />
-          Salvar perfil
-        </button>
+        <Botao>
+          <button type="submit">
+            <MdAddCircleOutline color="#fff" size={22} />
+            <p>Salvar perfil</p>
+          </button>
+        </Botao>
       </Form>
     </Container>
   );

@@ -37,29 +37,39 @@ export const Container = styled.div`
       background: rgba(255, 255, 255, 0.2);
       margin: 10px 0 20px;
     }
+  }
+`;
 
-    button {
-      display: flex;
+export const Botao = styled.div`
+  display: flex;
+  justify-content: flex-end;
 
-      align-items: center;
+  button {
+    display: flex;
 
-      margin: 5px 0 0;
-      /* TODO Verificar qual é o tamanho do botão mesmo */
-      width: 120px;
-      height: 44px;
+    align-items: center;
+    justify-content: center;
 
-      background: #f94d6a;
+    margin: 5px 0 0;
+    /* TODO Verificar qual é o tamanho do botão mesmo */
+    width: 142px;
+    height: 44px;
+
+    background: #f94d6a;
+
+    border: 0;
+    border-radius: 4px;
+
+    transition: background 0.2s;
+
+    &:hover {
+      background: ${darken(0.05, '#f94d6a')};
+    }
+
+    p {
+      font-size: 16px;
       font-weight: bold;
       color: #fff;
-      border: 0;
-      border-radius: 4px;
-      font-size: 16px;
-
-      transition: background 0.2s;
-
-      &:hover {
-        background: ${darken(0.03, '#f94d6a')};
-      }
     }
   }
 `;
