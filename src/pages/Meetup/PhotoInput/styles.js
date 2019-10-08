@@ -24,3 +24,37 @@ export const Container = styled.div`
     }
   }
 `;
+
+export const SelectImage = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 900px;
+  height: 300px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 0;
+  border-radius: 4px;
+  padding: 0 15px;
+  color: #fff;
+  margin: 0 0 10px;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  opacity: 0.3;
+
+  span {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  transition: opacity 0.4s;
+
+  &:hover {
+    opacity: 1;
+  }
+`;

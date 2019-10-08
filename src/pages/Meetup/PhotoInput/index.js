@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { MdCameraAlt } from 'react-icons/md';
 import { useField } from '@rocketseat/unform';
-import { Container } from './styles';
+import { Container, SelectImage } from './styles';
 import api from '~/services/api';
 
 export default function AvatarInput() {
@@ -28,6 +29,7 @@ export default function AvatarInput() {
     const response = await api.post('files', data);
 
     const { id, url } = response.data;
+    console.tron.log(url);
 
     setFile(id);
     setPreview(url);
@@ -35,11 +37,18 @@ export default function AvatarInput() {
 
   return (
     <Container>
-      <label htmlFor="avatar">
-        <img src={preview} alt="" />
+      <label htmlFor="photo">
+        {preview ? (
+          <img src={preview} alt="" />
+        ) : (
+          <SelectImage>
+            <MdCameraAlt size={64} color="#fff" />
+            <span>Selecionar Imagem</span>
+          </SelectImage>
+        )}
         <input
           type="file"
-          id="avatar"
+          id="photo"
           accept="image/*"
           data-file={file}
           onChange={handleChange}

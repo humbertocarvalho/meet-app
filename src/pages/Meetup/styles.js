@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Container = styled.div`
-  max-width: 600px;
+  max-width: 900px;
   margin: 50px auto;
 
   form {
@@ -39,7 +39,7 @@ export const Container = styled.div`
       }
     }
 
-    span {
+    > span {
       color: red;
       align-self: flex-start;
       margin: 0 0 10px;
