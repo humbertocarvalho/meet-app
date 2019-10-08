@@ -11,6 +11,7 @@ export const Container = styled.div`
     justify-content: space-between;
 
     h1 {
+      font-size: 32px;
       color: #fff;
     }
 
