@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
-
 import { MdAddCircleOutline } from 'react-icons/md';
+import PhotoInput from './PhotoInput';
 
 import { Container, Botao } from './styles';
 
@@ -13,6 +13,7 @@ export default function Meetup() {
         initialData={{ name: 'Humberto', email: 'hvcarvalhobrt@gmail.com' }}
         onSubmit={handleSubmit}
       >
+        <PhotoInput name="file_id" />
         <Input name="title" placeholder="Título do Meetup" />
 
         {/* TODO Verificar por que não está expandindo */}
