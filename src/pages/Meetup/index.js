@@ -17,11 +17,11 @@ export default function Meetup() {
         <nav>
           <button type="button" className="edit">
             <MdModeEdit size={22} color="#ffff" />
-            Editar
+            <span>Editar</span>
           </button>
           <button type="button" className="cancel">
             <MdDeleteForever size={22} color="#ffff" />
-            Cancelar
+            <span>Cancelar</span>
           </button>
         </nav>
       </header>

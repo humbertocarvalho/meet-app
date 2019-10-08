@@ -16,35 +16,36 @@ export const Container = styled.div`
       font-size: 32px;
       font-weight: bold;
     }
-
     nav {
       display: flex;
+      align-items: center;
 
       button {
-        width: 132px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 42px;
         font-weight: bold;
         color: #fff;
         border: 0;
 
         border-radius: 4px;
-        display: flex;
-        align-items: center;
 
         transition: background 0.3s;
 
         &.edit {
-          margin-right: 5px;
+          width: 116px;
+          margin-right: 15px;
           background: #4dbaf9;
         }
 
         &.cancel {
+          width: 132px;
           background: #d44059;
         }
 
         svg {
-          margin-left: 10px;
-          margin-right: 10px;
+          margin-right: 5px;
         }
       }
     }
