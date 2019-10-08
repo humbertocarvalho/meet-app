@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   background: #000000;
@@ -55,4 +56,10 @@ export const Logout = styled.button`
   border: none;
   color: #fff;
   font-weight: bold;
+
+  transition: background 0.2s;
+
+  &:hover {
+    background: ${darken(0.05, '#f94d6a')};
+  }
 `;
