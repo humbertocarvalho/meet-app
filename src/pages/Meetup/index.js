@@ -17,12 +17,7 @@ export default function Meetup() {
         <Input name="title" placeholder="Título do Meetup" />
 
         {/* TODO Verificar por que não está expandindo */}
-        <Input
-          name="description"
-          multiline
-          rows={50}
-          placeholder="Descrição completa"
-        />
+        <Input multiline name="description" placeholder="Descrição completa" />
 
         <hr />
 
