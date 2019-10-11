@@ -4,24 +4,20 @@ import { MdAddCircleOutline } from 'react-icons/md';
 import { Form, Input } from '@rocketseat/unform';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import { updateProfileRequest } from '~/store/modules/user/actions';
-// import { signOut } from '~/store/modules/auth/actions';
 import { Container, Botao } from './styles';
+import { updateProfileRequest } from '~/store/modules/user/actions';
 
 export default function Profile() {
   const dispatchEvent = useDispatch();
-  // const profile = useSelector(state => state.user.profile);
+  const profile = useSelector(state => state.user.profile);
 
-  function handleSubmit(data) {}
-
-  function handleSignOut() {}
+  function handleSubmit(data) {
+    dispatchEvent(updateProfileRequest(data));
+  }
 
   return (
     <Container>
-      <Form
-        initialData={{ name: 'Humberto', email: 'hvcarvalhobrt@gmail.com' }}
-        onSubmit={handleSubmit}
-      >
+      <Form initialData={profile} onSubmit={handleSubmit}>
         <Input name="name" placeholder="Nome completo" />
         <Input name="email" type="email" placeholder="Seu endereço de e-mail" />
 

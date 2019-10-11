@@ -5,14 +5,12 @@ import PhotoInput from './PhotoInput';
 
 import { Container, Botao } from './styles';
 
-export default function Meetup() {
-  function handleSubmit() {}
+export default function Meetup({ meetup }) {
+  function handleSubmit(data) {}
+
   return (
     <Container>
-      <Form
-        initialData={{ name: 'Humberto', email: 'hvcarvalhobrt@gmail.com' }}
-        onSubmit={handleSubmit}
-      >
+      <Form initialData={meetup} onSubmit={handleSubmit}>
         <PhotoInput name="file_id" />
         <Input name="title" placeholder="Título do Meetup" />
 
@@ -21,12 +19,8 @@ export default function Meetup() {
 
         <hr />
 
-        <Input name="date" type="password" placeholder="Data do Meetup" />
-        <Input
-          name="location"
-          type="password"
-          placeholder="Localização do Meetup"
-        />
+        <Input name="date" placeholder="Data do Meetup" />
+        <Input name="location" placeholder="Localização do Meetup" />
 
         <Botao>
           <button type="submit">
