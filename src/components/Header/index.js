@@ -1,11 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { signOut } from '~/store/modules/auth/actions';
 import logo from '~/assets/logo.svg';
 
 import { Container, Content, Profile, Logout } from './styles';
 
 export default function Header() {
+  const profile = useSelector(state => state.user.profile);
+  const dispatch = useDispatch();
+
+  function handleSignOut() {
+    dispatch(signOut());
+  }
+
   return (
     <Container>
       <Content>
@@ -19,11 +28,11 @@ export default function Header() {
           {/* <Notifications /> */}
           <Profile>
             <div>
-              <strong>Humberto de Carvalho</strong>
+              <strong>{profile.name}</strong>
               <Link to="/profile">Meu perfil</Link>
             </div>
           </Profile>
-          <Logout>Sair</Logout>
+          <Logout onClick={handleSignOut}>Sair</Logout>
         </aside>
       </Content>
     </Container>
