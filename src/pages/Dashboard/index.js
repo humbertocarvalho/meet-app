@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import { Link } from 'react-router-dom';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
+import api from '~/services/api';
 
 import { Container, Meetups, Meetup, Detalhar } from './styles';
 
 export default function Dashboard() {
+  const [meetups, setMeetups] = useState([]);
+  useEffect(() => {
+    async function loadMeetups() {
+      const response = await api.get('/meetup');
+
+      const data = response.data.map(meetup => {
+        return {
+          ...meetup,
+          formattedDate: format(
+            parseISO(meetup.date),
+            "dd 'de' MMMM, ' ás 'HH'h'",
+            { locale: pt }
+          ),
+        };
+      });
+
+      setMeetups(data);
+    }
+    loadMeetups();
+    console.tron.log('aqui chegou');
+  }, []);
+
   return (
     <Container>
       <header>
@@ -16,48 +41,15 @@ export default function Dashboard() {
       </header>
 
       <Meetups>
-        <Meetup to={`/meetups/${'1'}`}>
-          <span>Meetup de React Native</span>
-          <Detalhar>
-            <p>24 de Junho, às 20h</p>
-            <MdChevronRight color="#fff" size={22} />
-          </Detalhar>
-        </Meetup>
-        <Meetup to={`/meetups/${'1'}`}>
-          <span>Meetup de React Native</span>
-          <Detalhar>
-            <p>24 de Junho, às 20h</p>
-            <MdChevronRight color="#fff" size={22} />
-          </Detalhar>
-        </Meetup>
-        <Meetup to={`/meetups/${'1'}`}>
-          <span>Meetup de React Native</span>
-          <Detalhar>
-            <p>24 de Junho, às 20h</p>
-            <MdChevronRight color="#fff" size={22} />
-          </Detalhar>
-        </Meetup>
-        <Meetup to={`/meetups/${'1'}`}>
-          <span>Meetup de React Native</span>
-          <Detalhar>
-            <p>24 de Junho, às 20h</p>
-            <MdChevronRight color="#fff" size={22} />
-          </Detalhar>
-        </Meetup>
-        <Meetup to={`/meetups/${'1'}`}>
-          <span>Meetup de React Native</span>
-          <Detalhar>
-            <p>24 de Junho, às 20h</p>
-            <MdChevronRight color="#fff" size={22} />
-          </Detalhar>
-        </Meetup>
-        <Meetup to={`/meetups/${'1'}`}>
-          <span>Meetup de React Native</span>
-          <Detalhar>
-            <p>24 de Junho, às 20h</p>
-            <MdChevronRight color="#fff" size={22} />
-          </Detalhar>
-        </Meetup>
+        {meetups.map(meetup => (
+          <Meetup to={`/meetups/${meetup.id}`}>
+            <span>{meetup.title}</span>
+            <Detalhar>
+              <p>{meetup.formattedDate}</p>
+              <MdChevronRight color="#fff" size={22} />
+            </Detalhar>
+          </Meetup>
+        ))}
       </Meetups>
     </Container>
   );

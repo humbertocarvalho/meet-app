@@ -1,12 +1,16 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
+import api from '~/services/api';
 import PhotoInput from './PhotoInput';
 
 import { Container, Botao } from './styles';
 
 export default function Meetup({ meetup }) {
-  function handleSubmit(data) {}
+  async function handleSubmit(data) {
+    const response = await api.post('/meetup', data);
+    console.tron.log(response);
+  }
 
   return (
     <Container>
