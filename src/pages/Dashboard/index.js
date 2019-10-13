@@ -42,7 +42,7 @@ export default function Dashboard() {
 
       <Meetups>
         {meetups.map(meetup => (
-          <Meetup to={`/meetups/${meetup.id}`}>
+          <Meetup key={meetup.id} to={`/meetups/${meetup.id}`}>
             <span>{meetup.title}</span>
             <Detalhar>
               <p>{meetup.formattedDate}</p>
