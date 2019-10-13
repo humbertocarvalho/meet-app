@@ -5,6 +5,7 @@ import api from '~/services/api';
 import PhotoInput from './PhotoInput';
 
 import { Container, Botao } from './styles';
+import DatePicker from '~/components/DatePicker';
 
 export default function Meetup({ meetup }) {
   async function handleSubmit(data) {
@@ -22,7 +23,8 @@ export default function Meetup({ meetup }) {
 
         <hr />
 
-        <Input name="date" placeholder="Data do Meetup" />
+        <DatePicker name="date" placeholder="Data do Meetup" />
+        {/* <Input name="date" placeholder="Data do Meetup" /> */}
         <Input name="location" placeholder="Localização do Meetup" />
 
         <Botao>
