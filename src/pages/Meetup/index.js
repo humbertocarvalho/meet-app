@@ -14,7 +14,6 @@ export default function Meetup({ meetup }) {
         <PhotoInput name="file_id" />
         <Input name="title" placeholder="Título do Meetup" />
 
-        {/* TODO Verificar por que não está expandindo */}
         <Input multiline name="description" placeholder="Descrição completa" />
 
         <hr />
