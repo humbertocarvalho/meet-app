@@ -13,6 +13,8 @@ export default function Profile() {
 
   function handleSubmit(data) {
     dispatchEvent(updateProfileRequest(data));
+    // TODO Verificar por que usando o resetForm não está dando certo
+    // resetForm(profile);
   }
 
   return (
