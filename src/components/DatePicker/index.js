@@ -31,10 +31,10 @@ export default function DatePicker({ name, placeholder }) {
         onChange={date => setSelected(date)}
         ref={ref}
         showTimeSelect
-        timeFormat="HH:mm"
         timeIntervals={60}
         timeCaption="time"
-        dateFormat="MMMM d, yyyy h:mm aa"
+        timeFormat="HH:mm"
+        dateFormat="dd/MM/yyyy - HH:mm"
         placeholderText={placeholder}
         autoComplete="off"
       />

@@ -1,21 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
 import api from '~/services/api';
+import history from '~/services/history';
 import PhotoInput from './PhotoInput';
 
 import { Container, Botao } from './styles';
 import DatePicker from '~/components/DatePicker';
 
-export default function Meetup({ meetup }) {
-  async function handleSubmit(data) {
-    const response = await api.post('/meetup', data);
-    console.tron.log(response);
+const schema = Yup.object().shape({
+  title: Yup.string().required('Título do Meetup é obrigatório.'),
+  description: Yup.string().required('A descrição do Meetup é obrigatória.'),
+  date: Yup.string().required('A data do Meetup é obrigatória.'),
+  location: Yup.string().required('A localização do Meetup é obrigatória.'),
+});
+
+export default function Meetup() {
+  const [meetup, setMeetup] = useState({});
+  useEffect(() => {
+    async function loadMeetup() {
+      const response = await api.get('');
+    }
+
+    loadMeetup();
+  }, []);
+  async function handleSubmit(data, { resetForm }) {
+    try {
+      const response = await api.post('/meetup', data);
+      toast.success('Meetup criado com sucesso');
+      history.push(`/meetups/${response.data.id}`);
+    } catch (error) {
+      console.log(error);
+      const responseError = error.response.data;
+      toast.error(
+        responseError && responseError.error
+          ? `Erro ao criar o Meetup: ${responseError.error}`
+          : 'Erro ao criar o Meetup, tente novamente!'
+      );
+    }
   }
 
   return (
     <Container>
-      <Form initialData={meetup} onSubmit={handleSubmit}>
+      <Form schema={schema} initialData={meetup} onSubmit={handleSubmit}>
         <PhotoInput name="file_id" />
         <Input name="title" placeholder="Título do Meetup" />
 
@@ -24,7 +53,6 @@ export default function Meetup({ meetup }) {
         <hr />
 
         <DatePicker name="date" placeholder="Data do Meetup" />
-        {/* <Input name="date" placeholder="Data do Meetup" /> */}
         <Input name="location" placeholder="Localização do Meetup" />
 
         <Botao>

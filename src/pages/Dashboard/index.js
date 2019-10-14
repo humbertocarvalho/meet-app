@@ -27,7 +27,6 @@ export default function Dashboard() {
       setMeetups(data);
     }
     loadMeetups();
-    console.tron.log('aqui chegou');
   }, []);
 
   return (
