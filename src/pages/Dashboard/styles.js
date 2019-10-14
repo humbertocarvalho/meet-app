@@ -50,6 +50,8 @@ export const Meetup = styled(Link)`
 
   margin-top: 10px;
 
+  opacity: ${props => (props.past ? 0.2 : 1)};
+
   span {
     margin-left: 30px;
     color: #ffffff;
@@ -60,7 +62,7 @@ export const Meetup = styled(Link)`
   transition: transform 0.2s opacity 0.2s;
 
   &:hover {
-    opacity: 0.8;
+    opacity: ${props => (props.past ? 0.2 : 0.8)};
     transform: translateY(-2px);
   }
 `;
