@@ -17,22 +17,25 @@ const schema = Yup.object().shape({
   location: Yup.string().required('A localização do Meetup é obrigatória.'),
 });
 
-export default function Meetup() {
+export default function Meetup({ match }) {
+  const { id } = match.params;
   const [meetup, setMeetup] = useState({});
+
   useEffect(() => {
     async function loadMeetup() {
-      const response = await api.get('');
+      const response = await api.get(`meetup/${id}`);
+      setMeetup(response.data);
     }
 
     loadMeetup();
-  }, []);
-  async function handleSubmit(data, { resetForm }) {
+  }, [id]);
+  async function handleSubmit(data) {
     try {
+      console.tron.log('data', data);
       const response = await api.post('/meetup', data);
       toast.success('Meetup criado com sucesso');
       history.push(`/meetups/${response.data.id}`);
     } catch (error) {
-      console.log(error);
       const responseError = error.response.data;
       toast.error(
         responseError && responseError.error
