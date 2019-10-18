@@ -4,8 +4,8 @@ import { useField } from '@rocketseat/unform';
 import { Container, SelectImage } from './styles';
 import api from '~/services/api';
 
-export default function AvatarInput() {
-  const { defaultValue, registerField } = useField('avatar');
+export default function BannerInput() {
+  const { defaultValue, registerField } = useField('banner');
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
@@ -14,7 +14,7 @@ export default function AvatarInput() {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: 'avatar_id',
+        name: 'banner_id',
         ref: ref.current,
         path: 'dataset.file',
       });

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import api from '~/services/api';
 import history from '~/services/history';
-import PhotoInput from './PhotoInput';
+import BannerInput from './BannerInput';
 
 import { Container, Botao } from './styles';
 import DatePicker from '~/components/DatePicker';
@@ -29,10 +29,17 @@ export default function Meetup({ match }) {
 
     loadMeetup();
   }, [id]);
+
   async function handleSubmit(data) {
     try {
-      console.tron.log('data', data);
-      const response = await api.post('/meetup', data);
+      let response;
+      if (meetup.id) {
+        response = await api.put('/meetup', data);
+      } else {
+        console.tron.log(data);
+        response = await api.post('/meetup', data);
+      }
+
       toast.success('Meetup criado com sucesso');
       history.push(`/meetups/${response.data.id}`);
     } catch (error) {
@@ -48,7 +55,7 @@ export default function Meetup({ match }) {
   return (
     <Container>
       <Form schema={schema} initialData={meetup} onSubmit={handleSubmit}>
-        <PhotoInput name="file_id" />
+        <BannerInput name="banner_id" />
         <Input name="title" placeholder="Título do Meetup" />
 
         <Input multiline name="description" placeholder="Descrição completa" />
