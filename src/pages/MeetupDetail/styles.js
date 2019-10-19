@@ -5,6 +5,11 @@ export const Container = styled.div`
   max-width: 900px;
   margin: 50px auto;
 
+  .loading {
+    display: flex;
+    justify-content: center;
+  }
+
   header {
     width: 100%;
     display: flex;

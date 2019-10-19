@@ -4,6 +4,8 @@ import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
+import Loader from 'react-loader-spinner';
+
 import api from '~/services/api';
 import history from '~/services/history';
 import BannerInput from './BannerInput';
@@ -24,11 +26,14 @@ const schema = Yup.object().shape({
 export default function Meetup({ match }) {
   const { id } = match.params;
   const [meetup, setMeetup] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadMeetup() {
       const response = await api.get(`meetup/${id}`);
       setMeetup(response.data);
+      setLoading(false);
+      console.tron.log('response', response.data);
     }
 
     loadMeetup();
@@ -58,24 +63,34 @@ export default function Meetup({ match }) {
 
   return (
     <Container>
-      <Form schema={schema} initialData={meetup} onSubmit={handleSubmit}>
-        <BannerInput name="banner_id" />
-        <Input name="title" placeholder="Título do Meetup" />
+      {loading ? (
+        <div className="loading">
+          <Loader type="ThreeDots" color="#f94d6a" width={80} height={80} />
+        </div>
+      ) : (
+        <Form schema={schema} initialData={meetup} onSubmit={handleSubmit}>
+          <BannerInput name="banner_id" />
+          <Input name="title" placeholder="Título do Meetup" />
 
-        <Input multiline name="description" placeholder="Descrição completa" />
+          <Input
+            multiline
+            name="description"
+            placeholder="Descrição completa"
+          />
 
-        <hr />
+          <hr />
 
-        <DatePicker name="date" placeholder="Data do Meetup" />
-        <Input name="location" placeholder="Localização do Meetup" />
+          <DatePicker name="dates" placeholder="Data do Meetup" />
+          <Input name="location" placeholder="Localização do Meetup" />
 
-        <Botao>
-          <button type="submit">
-            <MdAddCircleOutline color="#fff" size={22} />
-            <p>Salvar Meetup</p>
-          </button>
-        </Botao>
-      </Form>
+          <Botao>
+            <button type="submit">
+              <MdAddCircleOutline color="#fff" size={22} />
+              <p>Salvar Meetup</p>
+            </button>
+          </Botao>
+        </Form>
+      )}
     </Container>
   );
 }

@@ -8,6 +8,7 @@ import {
   MdEvent,
 } from 'react-icons/md';
 import { toast } from 'react-toastify';
+import Loader from 'react-loader-spinner';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -52,8 +53,8 @@ export default function Meetup({ match }) {
   return (
     <Container>
       {loading ? (
-        <div>
-          <h1>CARREGANDO</h1>
+        <div className="loading">
+          <Loader type="ThreeDots" color="#f94d6a" width={80} height={80} />
         </div>
       ) : (
         <>
@@ -89,5 +90,9 @@ export default function Meetup({ match }) {
 }
 
 Meetup.propTypes = {
-  match: PropTypes.element.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.node,
+    }).isRequired,
+  }).isRequired,
 };
