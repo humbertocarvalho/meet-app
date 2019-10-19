@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -11,6 +12,9 @@ import { Container, Botao } from './styles';
 import DatePicker from '~/components/DatePicker';
 
 const schema = Yup.object().shape({
+  banner_id: Yup.number()
+    .transform(value => (!value ? undefined : value))
+    .required('Banner é requerido'),
   title: Yup.string().required('Título do Meetup é obrigatório.'),
   description: Yup.string().required('A descrição do Meetup é obrigatória.'),
   date: Yup.string().required('A data do Meetup é obrigatória.'),
@@ -75,3 +79,7 @@ export default function Meetup({ match }) {
     </Container>
   );
 }
+
+Meetup.propTypes = {
+  match: PropTypes.element.isRequired,
+};

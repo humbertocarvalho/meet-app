@@ -5,7 +5,7 @@ import { Container, SelectImage } from './styles';
 import api from '~/services/api';
 
 export default function BannerInput() {
-  const { defaultValue, registerField } = useField('banner');
+  const { defaultValue, registerField } = useField('banner_id');
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
