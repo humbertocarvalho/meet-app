@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import Loader from 'react-loader-spinner';
 
+import { parseISO } from 'date-fns';
 import api from '~/services/api';
 import history from '~/services/history';
 import BannerInput from './BannerInput';
@@ -31,25 +32,27 @@ export default function Meetup({ match }) {
   useEffect(() => {
     async function loadMeetup() {
       const response = await api.get(`meetup/${id}`);
-      setMeetup(response.data);
+      console.tron.log(response.data);
+      setMeetup({ ...response.data, date: parseISO(response.data.date) });
       setLoading(false);
-      console.tron.log('response', response.data);
     }
-
-    loadMeetup();
+    if (!id) {
+      setLoading(false);
+    } else {
+      loadMeetup();
+    }
   }, [id]);
 
   async function handleSubmit(data) {
     try {
       let response;
       if (meetup.id) {
-        response = await api.put('/meetup', data);
+        response = await api.put(`meetup/${id}`, data);
+        toast.success('Meetup atualizado com sucesso!');
       } else {
-        console.tron.log(data);
         response = await api.post('/meetup', data);
+        toast.success('Meetup criado com sucesso!');
       }
-
-      toast.success('Meetup criado com sucesso');
       history.push(`/meetups/${response.data.id}`);
     } catch (error) {
       const responseError = error.response.data;
@@ -80,7 +83,7 @@ export default function Meetup({ match }) {
 
           <hr />
 
-          <DatePicker name="dates" placeholder="Data do Meetup" />
+          <DatePicker name="date" placeholder="Data do Meetup" />
           <Input name="location" placeholder="Localização do Meetup" />
 
           <Botao>
@@ -96,5 +99,9 @@ export default function Meetup({ match }) {
 }
 
 Meetup.propTypes = {
-  match: PropTypes.element.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.node,
+    }).isRequired,
+  }).isRequired,
 };
