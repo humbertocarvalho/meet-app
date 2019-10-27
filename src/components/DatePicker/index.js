@@ -40,6 +40,7 @@ export default function DatePicker({ name, placeholder }) {
         dateFormat="dd/MM/yyyy - HH:mm"
         placeholderText={placeholder}
         autoComplete="off"
+        minDate={new Date()}
       />
       {error && <span>{error}</span>}
     </>
