@@ -20,7 +20,7 @@ const schema = Yup.object().shape({
     .required('Banner é requerido'),
   title: Yup.string().required('Título do Meetup é obrigatório.'),
   description: Yup.string().required('A descrição do Meetup é obrigatória.'),
-  date: Yup.string().required('A data do Meetup é obrigatória.'),
+  date: Yup.date().required('A data do Meetup é obrigatória.'),
   location: Yup.string().required('A localização do Meetup é obrigatória.'),
 });
 
@@ -47,7 +47,6 @@ export default function Meetup({ match }) {
     let action;
     try {
       let response;
-
       if (meetup.id) {
         action = 'atualizar';
         response = await api.put(`meetup/${id}`, data);
