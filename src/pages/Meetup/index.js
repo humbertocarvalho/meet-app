@@ -44,12 +44,16 @@ export default function Meetup({ match }) {
   }, [id]);
 
   async function handleSubmit(data) {
+    let action;
     try {
       let response;
+
       if (meetup.id) {
+        action = 'atualizar';
         response = await api.put(`meetup/${id}`, data);
         toast.success('Meetup atualizado com sucesso!');
       } else {
+        action = 'criar';
         response = await api.post('/meetup', data);
         toast.success('Meetup criado com sucesso!');
       }
@@ -58,8 +62,8 @@ export default function Meetup({ match }) {
       const responseError = error.response.data;
       toast.error(
         responseError && responseError.error
-          ? `Erro ao criar o Meetup: ${responseError.error}`
-          : 'Erro ao criar o Meetup, tente novamente!'
+          ? `Erro ao ${action} o Meetup: ${responseError.error}`
+          : `Erro ao ${action} o Meetup, tente novamente!`
       );
     }
   }
