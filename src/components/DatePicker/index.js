@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
 import pt from 'date-fns/locale/pt';
 
@@ -45,8 +44,3 @@ export default function DatePicker({ name, placeholder }) {
     </>
   );
 }
-
-DatePicker.propTypes = {
-  name: PropTypes.element.isRequired,
-  placeholder: PropTypes.element.isRequired,
-};

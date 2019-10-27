@@ -6,6 +6,8 @@ import api from '~/services/api';
 
 export default function BannerInput() {
   const { defaultValue, registerField } = useField('banner');
+  const { error } = useField('banner_id');
+
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
@@ -31,7 +33,7 @@ export default function BannerInput() {
     const { id, url } = response.data;
 
     setFile(id);
-    console.tron.log('qual é minha url', url);
+
     setPreview(url);
   }
 
@@ -55,6 +57,8 @@ export default function BannerInput() {
           ref={ref}
         />
       </label>
+
+      {error && <span className="erro">{error}</span>}
     </Container>
   );
 }

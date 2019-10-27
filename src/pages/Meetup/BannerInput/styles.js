@@ -23,6 +23,13 @@ export const Container = styled.div`
       display: none;
     }
   }
+
+  span.erro {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0 0 10px;
+  }
 `;
 
 export const SelectImage = styled.div`

@@ -13,8 +13,9 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function loadMeetups() {
-      const response = await api.get('/meetup');
+      const response = await api.get('/organized');
 
+      console.tron.log(response);
       const data = response.data.map(meetup => {
         return {
           ...meetup,

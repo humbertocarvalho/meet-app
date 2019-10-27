@@ -10,6 +10,10 @@ export const Container = styled.div`
     justify-content: center;
   }
 
+  input {
+    width: 100%;
+  }
+
   form {
     display: flex;
     flex-direction: column;
