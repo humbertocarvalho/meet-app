@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import {
   MdDeleteForever,
   MdModeEdit,
@@ -43,7 +43,10 @@ export default function Meetup({ match }) {
 
       setMeetup({
         ...response.data,
-        dateFormatted: parseISO(response.data.date),
+        dateFormatted: format(
+          parseISO(response.data.date),
+          "dd/MM/Y - HH'h'mm"
+        ),
       });
       setLoading(false);
     }
@@ -78,7 +81,7 @@ export default function Meetup({ match }) {
 
             <footer>
               <MdEvent size={20} />
-              {meetup.date}
+              {meetup.dateFormatted}
               <MdLocationOn size={20} />
               {meetup.location}
             </footer>
