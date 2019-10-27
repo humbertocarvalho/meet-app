@@ -11,10 +11,9 @@ export default function Profile() {
   const dispatchEvent = useDispatch();
   const profile = useSelector(state => state.user.profile);
 
-  function handleSubmit(data) {
+  function handleSubmit(data, { resetForm }) {
     dispatchEvent(updateProfileRequest(data));
-    // TODO Verificar por que usando o resetForm não está dando certo
-    // resetForm(profile);
+    resetForm(profile);
   }
 
   return (
